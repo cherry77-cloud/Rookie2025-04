@@ -50,7 +50,7 @@
 ### 协商缓存
 当强缓存失效时，浏览器会发送请求到服务器，通过`ETag`或`Last-Modified`等`HTTP`响应头与服务器进行验证，以确定资源是否被修改。如果资源未修改，服务器返回`304 Not Modified`状态码，告知浏览器使用本地缓存；如果资源已修改，则返回新的资源，浏览器更新本地缓存。这种方式需要与服务器通信，但可以确保用户总是获取最新的内容。
 
-#### 基于`Last-Modified`的协商缓存
+#### 1. 基于`Last-Modified`的协商缓存
 - **`Last-Modified`** 是资源的最后修改时间，服务器在响应头部中返回。
 - 当客户端读取到`Last-Modified`的时候，会在下次的请求标头中携带一个字段: `If-Modified-Since`，而这个请求头中的`If-Modified-Since`就是服务器第一次修改时候给他的时间。
 - 服务器比较请求中的 `If-Modified-Since` 值与当前资源的 `Last-Modified` 值，如果比对的结果是没有变化，表示资源未发生变化，返回状态码 `304 Not Modified`。如果比对的结果说资源已经更新了，就会给浏览器正常返回资源，返回`200`状态。
@@ -59,9 +59,83 @@
 - 因为是更改文件修改时间来判断的，所以在文件内容本身不修改的情况下，依然有可能更新文件修改时间（比如修改文件名再改回来），这样，就有可能文件内容明明没有修改，但是缓存依然失效了。
 - 当文件在极短时间内完成修改的时候（比如几百毫秒）。因为文件修改时间记录的最小单位是秒，所以，如果文件在几百毫秒内完成修改的话，文件修改时间不会改变，这样，即使文件内容修改了，依然不会返回新的文件。
 
-#### 基于`ETag`的协商缓存
+#### 2. 基于`ETag`的协商缓存
 将原先协商缓存的比较时间戳的形式修改成了比较文件指纹（根据文件内容计算出的唯一哈希值）。
 - **`ETag`** 是服务器为资源生成的唯一标识符（文件指纹），可以是根据文件内容计算出的哈希值，服务端将其和资源一起放回给客户端。
 - 客户端在请求头部的 `If-None-Match` 字段中携带上次响应的 `ETag` 值。
 - 服务器比较请求中的 `If-None-Match` 值与当前资源的 `ETag` 值，如果匹配，表示资源未发生变化，返回状态码 `304 Not Modified`。
 - 如果两个文件指纹不吻合，则说明文件被更改，那么将新的文件指纹重新存储到响应头的`ETag`中并返回给客户端。
+
+---
+
+```go
+const (
+	StatusContinue           = 100 // RFC 9110, 15.2.1
+	StatusSwitchingProtocols = 101 // RFC 9110, 15.2.2
+	StatusProcessing         = 102 // RFC 2518, 10.1
+	StatusEarlyHints         = 103 // RFC 8297
+
+	StatusOK                   = 200 // RFC 9110, 15.3.1
+	StatusCreated              = 201 // RFC 9110, 15.3.2
+	StatusAccepted             = 202 // RFC 9110, 15.3.3
+	StatusNonAuthoritativeInfo = 203 // RFC 9110, 15.3.4
+	StatusNoContent            = 204 // RFC 9110, 15.3.5
+	StatusResetContent         = 205 // RFC 9110, 15.3.6
+	StatusPartialContent       = 206 // RFC 9110, 15.3.7
+	StatusMultiStatus          = 207 // RFC 4918, 11.1
+	StatusAlreadyReported      = 208 // RFC 5842, 7.1
+	StatusIMUsed               = 226 // RFC 3229, 10.4.1
+
+	StatusMultipleChoices   = 300 // RFC 9110, 15.4.1
+	StatusMovedPermanently  = 301 // RFC 9110, 15.4.2
+	StatusFound             = 302 // RFC 9110, 15.4.3
+	StatusSeeOther          = 303 // RFC 9110, 15.4.4
+	StatusNotModified       = 304 // RFC 9110, 15.4.5
+	StatusUseProxy          = 305 // RFC 9110, 15.4.6
+	_                       = 306 // RFC 9110, 15.4.7 (Unused)
+	StatusTemporaryRedirect = 307 // RFC 9110, 15.4.8
+	StatusPermanentRedirect = 308 // RFC 9110, 15.4.9
+
+	StatusBadRequest                   = 400 // RFC 9110, 15.5.1
+	StatusUnauthorized                 = 401 // RFC 9110, 15.5.2
+	StatusPaymentRequired              = 402 // RFC 9110, 15.5.3
+	StatusForbidden                    = 403 // RFC 9110, 15.5.4
+	StatusNotFound                     = 404 // RFC 9110, 15.5.5
+	StatusMethodNotAllowed             = 405 // RFC 9110, 15.5.6
+	StatusNotAcceptable                = 406 // RFC 9110, 15.5.7
+	StatusProxyAuthRequired            = 407 // RFC 9110, 15.5.8
+	StatusRequestTimeout               = 408 // RFC 9110, 15.5.9
+	StatusConflict                     = 409 // RFC 9110, 15.5.10
+	StatusGone                         = 410 // RFC 9110, 15.5.11
+	StatusLengthRequired               = 411 // RFC 9110, 15.5.12
+	StatusPreconditionFailed           = 412 // RFC 9110, 15.5.13
+	StatusRequestEntityTooLarge        = 413 // RFC 9110, 15.5.14
+	StatusRequestURITooLong            = 414 // RFC 9110, 15.5.15
+	StatusUnsupportedMediaType         = 415 // RFC 9110, 15.5.16
+	StatusRequestedRangeNotSatisfiable = 416 // RFC 9110, 15.5.17
+	StatusExpectationFailed            = 417 // RFC 9110, 15.5.18
+	StatusTeapot                       = 418 // RFC 9110, 15.5.19 (Unused)
+	StatusMisdirectedRequest           = 421 // RFC 9110, 15.5.20
+	StatusUnprocessableEntity          = 422 // RFC 9110, 15.5.21
+	StatusLocked                       = 423 // RFC 4918, 11.3
+	StatusFailedDependency             = 424 // RFC 4918, 11.4
+	StatusTooEarly                     = 425 // RFC 8470, 5.2.
+	StatusUpgradeRequired              = 426 // RFC 9110, 15.5.22
+	StatusPreconditionRequired         = 428 // RFC 6585, 3
+	StatusTooManyRequests              = 429 // RFC 6585, 4
+	StatusRequestHeaderFieldsTooLarge  = 431 // RFC 6585, 5
+	StatusUnavailableForLegalReasons   = 451 // RFC 7725, 3
+
+	StatusInternalServerError           = 500 // RFC 9110, 15.6.1
+	StatusNotImplemented                = 501 // RFC 9110, 15.6.2
+	StatusBadGateway                    = 502 // RFC 9110, 15.6.3
+	StatusServiceUnavailable            = 503 // RFC 9110, 15.6.4
+	StatusGatewayTimeout                = 504 // RFC 9110, 15.6.5
+	StatusHTTPVersionNotSupported       = 505 // RFC 9110, 15.6.6
+	StatusVariantAlsoNegotiates         = 506 // RFC 2295, 8.1
+	StatusInsufficientStorage           = 507 // RFC 4918, 11.5
+	StatusLoopDetected                  = 508 // RFC 5842, 7.2
+	StatusNotExtended                   = 510 // RFC 2774, 7
+	StatusNetworkAuthenticationRequired = 511 // RFC 6585, 6
+)
+```
