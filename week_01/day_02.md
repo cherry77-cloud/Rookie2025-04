@@ -148,3 +148,25 @@ const (
 	StatusNetworkAuthenticationRequired = 511 // RFC 6585, 6
 )
 ```
+---
+```go
+type IRoutes interface {
+    Use(...HandlerFunc) IRoutes
+
+    Handle(string, string, ...HandlerFunc) IRoutes
+    Any(string, ...HandlerFunc) IRoutes
+    GET(string, ...HandlerFunc) IRoutes
+    POST(string, ...HandlerFunc) IRoutes
+    DELETE(string, ...HandlerFunc) IRoutes
+    PATCH(string, ...HandlerFunc) IRoutes
+    PUT(string, ...HandlerFunc) IRoutes
+    OPTIONS(string, ...HandlerFunc) IRoutes
+    HEAD(string, ...HandlerFunc) IRoutes
+    Match([]string, string, ...HandlerFunc) IRoutes
+
+    StaticFile(string, string) IRoutes
+    StaticFileFS(string, string, http.FileSystem) IRoutes
+    Static(string, string) IRoutes
+    StaticFS(string, http.FileSystem) IRoutes
+}
+```
