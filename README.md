@@ -11,3 +11,4 @@
 
 ## `week_02`
 - [`day_08` Cookie和Session](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_08.md) ✅
+- [`day_09` 进程和线程](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_09.md) ✅
