@@ -14,3 +14,4 @@
 - [`day_09` 进程和线程](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_09.md) ✅
 - [`day_10` 进程调度算法](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_10.md) ✅
 - [`day_11` 死锁](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_11.md) ✅
+- [`day_12` 线程同步方式](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_12.md) ✅
