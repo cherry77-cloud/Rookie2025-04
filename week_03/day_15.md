@@ -48,3 +48,27 @@
    ```sql
    WHERE col1 = 1 OR col2 = 2  -- 若col1和col2使用不同索引
    ```
+2. **非等值查询**
+   ```sql
+   WHERE col != 10  -- 或使用 <> 操作符
+   ```
+
+3. **列类型转换**
+   ```sql
+   WHERE CAST(col AS DATE) = '2023-01-01'  -- 对列进行显式/隐式类型转换
+   ```
+
+4. **`LIKE`通配符开头**
+   ```sql
+   WHERE col LIKE '%abc'  -- 以%开头的模糊查询
+   ```
+
+5. **函数或表达式操作列**
+   ```sql
+   WHERE UPPER(col) = 'VALUE'  -- 对列使用函数或运算
+   ```
+
+6. **表连接列类型不匹配**
+   ```sql
+   JOIN table1 ON table1.int_col = table2.str_col  -- 类型不一致导致隐式转换
+   ```
