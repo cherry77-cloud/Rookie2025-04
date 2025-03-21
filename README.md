@@ -17,3 +17,8 @@
 - [`day_12` 线程同步方式](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_12.md) ✅
 - [`day_13` Linux命令](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_13.md) ✅
 - [`day_14` SQL语句的执行流程](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_14.md) ✅
+
+---
+
+## `week_03`
+- [`day_15` MySQL的执行引擎](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_03/day_15.md) ✅
