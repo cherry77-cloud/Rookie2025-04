@@ -1,5 +1,6 @@
 ## `week_01`
 - [TCP/IP 模型和 OSI 模型的区别 | 从输入URL到页面展示到底发生了什么](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_01/day_01.md) 🌐
+
 - [HTTP 请求报文和响应报文是怎样的，有哪些常见的字段 | HTTP有哪些请求方式 | GET请求和POST请求的区别](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_01/day_02.md) 🌐
 - [HTTP 中常见的状态码有哪些](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_01/day_03.md) ✅
 - [HTTP 1.0 和 HTTP 1.1 的区别](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_01/day_04.md) ✅
