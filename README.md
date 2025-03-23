@@ -30,9 +30,9 @@
   
 - [熟悉哪些 Linux 命令 | Linux 进程与端口操作 | I/O 多路复用机制对比](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_13.md) 🐧
   
-- [SQL语句的执行流程](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_14.md) ✅
+- [SQL 查询语句的执行流程 | 事务的四大特性（ACID）| 数据库的事务隔离级别](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_14.md) 💾
 
 ---
 
 ## `week_03`
-- [MySQL的执行引擎](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_03/day_15.md) ✅
+- [MySQL的执行引擎有哪些 | MySQL为什么使用B+树来索引 | 索引失效的场景](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_03/day_15.md) 💾
