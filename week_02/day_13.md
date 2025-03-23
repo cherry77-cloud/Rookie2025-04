@@ -46,10 +46,8 @@
 2. 执行 `kill -9 PID` 强制终止进程
 
 ### 3. 查看端口占用
-- **方法一**：  
-  `lsof -i:端口号`  
-- **方法二**：  
-  `netstat -tulnp | grep 端口号`
+- **方法一**：`lsof -i:端口号`  
+- **方法二**：`netstat -tulnp | grep 端口号`
 
 ---
 
