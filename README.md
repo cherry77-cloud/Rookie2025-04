@@ -20,15 +20,15 @@
 ## `week_02`
 - [DNS 查询过程 | CDN 是什么，有什么作用 | Cookie 和 Session 是什么，有什么区别](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_08.md) 🌐
   
-- [进程和线程](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_09.md) ✅
+- [进程和线程的区别 | 并行与并发的区别 | 用户态与内核态](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_09.md) 🐧
   
-- [进程调度算法](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_10.md) ✅
+- [进程调度算法 | 进程间通信方式 | 进程同步与互斥](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_10.md) 🐧
   
-- [死锁](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_11.md) ✅
+- [死锁及其避免 | 典型锁机制 | 虚拟内存详解](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_11.md) 🐧
   
-- [线程同步方式](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_12.md) ✅
+- [线程同步方式 | 页面置换算法](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_12.md) 🐧
   
-- [Linux命令](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_13.md) ✅
+- [熟悉哪些 Linux 命令 | Linux 进程与端口操作 | I/O 多路复用机制对比](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_13.md) 🐧
   
 - [SQL语句的执行流程](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_02/day_14.md) ✅
 
