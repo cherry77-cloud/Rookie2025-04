@@ -38,3 +38,5 @@
 - [【MySQL的执行引擎有哪些】【MySQL为什么使用B+树来索引】【索引失效的场景】](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_03/day_15.md) 💾
 
 - [【慢查询】【数据库日志机制】](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_03/day_16.md) 💾
+
+- [【MySQL和Redis的区别】【Redis的优缺点和查询快的原因】](https://github.com/cherry77-cloud/Rookie2025-04/blob/main/week_03/day_17.md) 💾
